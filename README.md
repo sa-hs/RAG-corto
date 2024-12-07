@@ -43,7 +43,7 @@ Instala y prepara el modelo localmente.
 
 !ollama pull llama3 
 
-# Se divide el contenido del documento en fragmentos manejables utilizando un separador y configurando el tamaño de los fragmentos
+Se divide el contenido del documento en fragmentos manejables utilizando un separador y configurando el tamaño de los fragmentos
 
 text_splitter = CharacterTextSplitter(
     separator="\n",
