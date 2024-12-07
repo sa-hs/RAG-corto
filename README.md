@@ -3,7 +3,7 @@ Este repositorio contiene un código diseñado para implementar un sistema de RA
 
 import subprocess
 
-Configurar el entorno e instalar paquetes
+#Configurar el entorno e instalar paquetes
 
 try:
     subprocess.run(['pip', 'install', 'langchain', 'langchain_community', 'langchain-openai',
@@ -29,7 +29,7 @@ loader =  PyMuPDFLoader('/content/drive/MyDrive/Colab Notebooks/CIDE/Introducci�
 
 docs = loader.load()
 
-Instala y prepara el modelo localmente.
+#Instala y prepara el modelo localmente.
 
 !curl -fsSL https://ollama.com/install.sh | sh
 
@@ -43,7 +43,7 @@ Instala y prepara el modelo localmente.
 
 !ollama pull llama3 
 
-Se divide el contenido del documento en fragmentos manejables utilizando un separador y configurando el tamaño de los fragmentos
+#Se divide el contenido del documento en fragmentos manejables utilizando un separador y configurando el tamaño de los fragmentos
 
 text_splitter = CharacterTextSplitter(
     separator="\n",
@@ -53,11 +53,11 @@ text_splitter = CharacterTextSplitter(
 
 texts = text_splitter.split_documents(docs)
 
-Se generan vectores a partir de los fragmentos de texto utilizando
+#Se generan vectores a partir de los fragmentos de texto utilizando
 
 embeddings = HuggingFaceEmbeddings()
 
-Se crea una base de datos vectorial utilizando FAISS para realizar búsquedas eficientes.
+#Se crea una base de datos vectorial utilizando FAISS para realizar búsquedas eficientes.
 
 db = FAISS.from_documents(texts, embeddings)
 
@@ -70,7 +70,7 @@ chain = RetrievalQA.from_chain_type(
     retriever=db.as_retriever()
 )
 
-Se formula una consulta al sistema y se imprime la respuesta generada
+#Se formula una consulta al sistema y se imprime la respuesta generada
 
 question = "que es un estadistico?"
 
